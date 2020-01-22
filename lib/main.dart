@@ -29,6 +29,10 @@ class MyHomePage extends StatelessWidget {
       date: DateTime.now(),
     ),
   ];
+
+  String titleInput;
+  String amountInput;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +40,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -44,6 +48,32 @@ class MyHomePage extends StatelessWidget {
               color: Colors.yellow,
               child: Text('CHART'),
               elevation: 5,
+            ),
+          ),
+          Card(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Purchased item'),
+                    onChanged: (val) => titleInput = val,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    onChanged: (val) => amountInput = val,
+                  ),
+                  FlatButton(
+                    child: Text('Add'),
+                    textColor: Colors.purple,
+                    onPressed: () {
+                      print(titleInput);
+                      print(amountInput);
+                    },
+                  )
+                ],
+              ),
             ),
           ),
           Column(
@@ -82,7 +112,9 @@ class MyHomePage extends StatelessWidget {
                             )),
                         Text(
                           DateFormat.yMMMd().format(tx.date),
-                          style: TextStyle(color: Colors.grey,),
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
                         ),
                       ],
                     ),
