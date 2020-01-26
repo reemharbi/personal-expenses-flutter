@@ -24,8 +24,9 @@ class _NewTransactionState extends State<NewTransaction> {
     }
 
     widget.addTx(
-      _titleController.text,
-      double.parse(_amountController.text),
+      enteredTitle,
+      enteredAmount,
+      _selectDate,
     );
 
     Navigator.of(context).pop();
